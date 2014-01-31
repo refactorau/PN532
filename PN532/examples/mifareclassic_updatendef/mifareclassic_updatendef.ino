@@ -5,15 +5,18 @@
 */
 /**************************************************************************/
 
-// choose to SPI or I2C or HSU
-#if 0
+// #define PN532_USE_SPI // uncomment for SPI
+// #define PN532_USE_HSU // uncomment for High Speed UART
+// otherwise we default to I2C
+
+#ifdef PN532_USE_SPI
   #include <SPI.h>
   #include <PN532_SPI.h>
   #include "PN532.h"
 
   PN532SPI pn532spi(SPI, 10);
   PN532 nfc(pn532spi);
-#elif 0
+#elifdef PN532_USE_HSU
   #include <PN532_HSU.h>
   #include <PN532.h>
       
